@@ -30,22 +30,12 @@ public class MyUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.findByUsername(username);
-		System.out.println("IM HERE");
-		if(user == null)
-			System.out.println("IS NULL");
-		else {
-			System.out.println("ISNT NULL");
-			System.out.println(user.getUsername());
-			System.out.println(user.getPassword());
-			System.out.println(user.getFirstName());
-			System.out.println(user.getLastName());
-		}
 		if (user == null)
 			throw new UsernameNotFoundException("Invalid username or password");
-		System.out.println("--------------------GETTING ROLES-----------------------");
+		//System.out.println("--------------------GETTING ROLES-----------------------");
 		//Error is toruble with getting roles
 		List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
-		System.out.println("--------------------BUILDING USER-----------------------");
+		//System.out.println("--------------------BUILDING USER-----------------------");
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
 				authorities);
 	}
