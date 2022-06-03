@@ -1,4 +1,4 @@
-package com.anthony.employeeCrud.service;
+package com.anthony.employeeCrud.service.impl;
 
 import java.util.Arrays;
 
@@ -12,6 +12,7 @@ import com.anthony.employeeCrud.dao.UserRepository;
 import com.anthony.employeeCrud.dto.UserDTO;
 import com.anthony.employeeCrud.entity.Role;
 import com.anthony.employeeCrud.entity.User;
+import com.anthony.employeeCrud.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
