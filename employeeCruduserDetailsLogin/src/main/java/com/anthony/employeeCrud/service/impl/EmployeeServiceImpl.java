@@ -1,4 +1,4 @@
-package com.anthony.employeeCrud.service;
+package com.anthony.employeeCrud.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.anthony.employeeCrud.dao.EmployeeRepository;
 import com.anthony.employeeCrud.entity.Employee;
+import com.anthony.employeeCrud.service.EmployeeService;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
