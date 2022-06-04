@@ -38,15 +38,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.antMatchers("/resources/**").permitAll()
 		.and()
 		.formLogin()
-			.loginPage("/login")
-			.loginProcessingUrl("/authenticateUser")
+			.loginPage("/account/login")
+			.loginProcessingUrl("/account/authenticateUser")
 			.permitAll()
 		.and()
 			.logout()
 			.permitAll()
 		.and()
 			.exceptionHandling()
-			.accessDeniedPage("/access-denied");
+			.accessDeniedPage("/account/access-denied");
 		/*
 		 * Order of restriction is greatest->least restrictions
 		 * .antMatchers("/employees/admin").hasRole("ADMIN") would restrict any admin
