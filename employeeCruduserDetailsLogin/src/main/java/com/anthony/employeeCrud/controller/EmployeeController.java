@@ -18,7 +18,7 @@ import com.anthony.employeeCrud.service.EmployeeService;
 @RequestMapping("employees")
 public class EmployeeController {
 
-	private EmployeeService employeeService;
+	private final EmployeeService employeeService;
 
 	@Autowired
 	public EmployeeController(EmployeeService employeeService) {
@@ -34,8 +34,7 @@ public class EmployeeController {
 
 	@GetMapping("add")
 	public String showEmployeeForm(Model model) {
-		Employee employee = new Employee();
-		model.addAttribute("employee", employee);
+		model.addAttribute("employee", new Employee());
 		return "employee-form";
 	}
 

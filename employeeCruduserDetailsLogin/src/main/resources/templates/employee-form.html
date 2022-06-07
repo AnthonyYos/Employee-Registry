@@ -4,25 +4,53 @@
 <title>Employees</title>
 <!-- @ symbol in th:href gives reference to context path of application -->
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div class="form-group">
-			<!-- action="#" placeholder that must be used, th:action is the actual mapping to the controller-->
-			<!-- th:object is the model-->
-			<form action="#" th:action="@{/employees/save}" th:object="${employee}" method="POST">
-				<input type="hidden" th:field="*{id}"> <input type="text"
-					th:field="*{firstName}" placeholder="First Name"> <input
-					type="text" th:field="*{lastName}" placeholder="Last Name">
-				<input type="text" th:field="*{email}" placeholder="Email">
-				<button type="submit" class="btn btn-info">Save</button>
-			</form>
+	<div id="employeeform" style="margin-top: 50px;"
+		class="mainbox col-md-2 col-md-offset-4 col-sm-6 col-sm-offset-2">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<div class="panel-title">Employee Form</div>
+			</div>
+			<div class="panel-body">
+				<form action="#" th:action="@{/employees/save}"
+					th:object="${employee}" method="POST" class="form-horizontal">
+					
+					<input type="hidden" th:field="*{id}">
+					
+					<div class="form-group">
+						<label for="firstname" class="col-xs-4 control-label">First Name</label>
+						<div class="col-xs-4">
+							<input type="text" th:field="*{firstName}" placeholder="First Name">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="lastName" class="col-xs-4 control-label">Last Name</label>
+						<div class="col-xs-4">
+							<input type="text" th:field="*{lastName}" placeholder="Last Name">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="email" class="col-xs-4 control-label">Email</label>
+						<div class="col-xs-4">
+							<input type="text" th:field="*{email}" placeholder="Email">
+						</div>
+					</div>
+					
+					<button type="submit" class="btn btn-info">Save</button>
+					<hr>
+					<a th:href="@{/}">Back to Employees</a>
+				</form>
+			</div>
 		</div>
 	</div>
-	<hr>
-	<a th:href="@{/}">Back to Employees</a>
+
 </body>
 </html>

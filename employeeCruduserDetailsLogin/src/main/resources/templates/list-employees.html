@@ -20,16 +20,11 @@
 		<a th:href="@{/employees/add}" class="btn btn-primary btn-sm mb-3">Add
 			Employee</a>
 
-
-
 		<form action="#" th:action="@{/employees/search}" method="GET">
 			<input class="form-control mb-3" type="search"
 				name="employeeNameOrEmail" placeholder="Search by name or email" />
 			<button class="btn btn-success mb-3" type="submit">Search</button>
 		</form>
-
-
-
 
 		<div class="table-responsive">
 
@@ -50,19 +45,23 @@
 						<td th:text="${employee.lastName}"></td>
 						<td th:text="${employee.email}"></td>
 						<div sec:authorize="hasRole('ROLE_ADMIN')">
-							<td><a th:href="@{/employees/update(id=${employee.id})}"
-								class="btn btn-primary btn-sm">Update</a> <a
-								th:href="@{/employees/delete(id=${employee.id})}"
-								class="btn btn-danger btn-sm">Delete</a></td>
+							<td>
+								<a th:href="@{/employees/update(id=${employee.id})}"
+								class="btn btn-primary btn-sm">Update</a> 
+								<a th:href="@{/employees/delete(id=${employee.id})}"
+								class="btn btn-danger btn-sm">Delete</a>
+							</td>
 						</div>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+		
 		<hr>
 		<form action="#" th:action="@{/logout}" method="POST">
 			<button type="submit" class="btn btn-sm btn-info">Logout</button>
 		</form>
+		
 	</div>
 
 </body>
