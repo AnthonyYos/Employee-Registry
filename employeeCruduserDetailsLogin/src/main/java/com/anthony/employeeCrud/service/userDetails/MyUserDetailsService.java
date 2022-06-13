@@ -2,6 +2,7 @@ package com.anthony.employeeCrud.service.userDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -30,21 +31,20 @@ public class MyUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.findByUsername(username);
-		if (user == null)
+		if (user == null) {
 			throw new UsernameNotFoundException("Invalid username or password");
-		//System.out.println("--------------------GETTING ROLES-----------------------");
-		//Error is toruble with getting roles
+		}
 		List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
-		//System.out.println("--------------------BUILDING USER-----------------------");
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
 				authorities);
 	}
 
 	private List<GrantedAuthority> getUserAuthority(Collection<Role> userRoles) {
-		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 		for (Role role : userRoles)
 			authorities.add(new SimpleGrantedAuthority(role.getRole()));
-		return authorities;
+		List<GrantedAuthority> userAuthorities = new ArrayList<GrantedAuthority>(authorities);
+		return userAuthorities;
 	}
 	
 	/*
