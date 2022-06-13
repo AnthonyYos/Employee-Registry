@@ -4,7 +4,6 @@ public class UserDTO {
 
 	private String username;
 	private String password;
-	private String matchingPassword;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -26,14 +25,6 @@ public class UserDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getMatchingPassword() {
-		return matchingPassword;
-	}
-
-	public void setMatchingPassword(String matchingPassword) {
-		this.matchingPassword = matchingPassword;
 	}
 
 	public String getFirstName() {
