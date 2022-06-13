@@ -48,12 +48,19 @@ public class AccountController {
 	public String registerForm(@ModelAttribute("userDTO") UserDTO userDTO, Model model, BindingResult bindingResult) {
 
 		// Check for user in db
-		User user = userService.findUserByUsername(userDTO.getUsername());
+		User existingUsername = userService.findUserByUsername(userDTO.getUsername());
+		User existingEmail = userService.findUserByEmail(userDTO.getEmail());
 		// If user != null then username is already taken
-		if (user != null) {
-			System.out.println(user);
+		if (existingUsername != null) {
+			System.out.println(existingUsername);
 			model.addAttribute("userDTO", userDTO);
-			logger.info("User already exists");
+			logger.info("Username already in use");
+			return "register-form";
+		}
+		if (existingEmail != null) {
+			System.out.println(existingEmail);
+			model.addAttribute("userDTO", userDTO);
+			logger.info("Email already in use");
 			return "register-form";
 		}
 		userService.save(userDTO);
